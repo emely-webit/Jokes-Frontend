@@ -1,24 +1,29 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import {Route, BrowserRouter} from 'react-router-dom'
+import AllJokes from './components/AllJokes';
+import UdvalgtJoke from './components/UdvalgtJoke';
+import JokeAdmin from './components/JokeAdmin';
+import Navbar from './components/Navbar';
+import JokeOpret from './components/JokeOpret';
+import JokeSlet from './components/JokeSlet';
+import JokeRet from './components/JokeRet';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <BrowserRouter>
+        <Navbar/>
+        <Route path="/administrator" component={JokeAdmin}/>
+        <Route path="/alle_jokes" component={AllJokes} />
+        <Route path="/udvalgt/:id" component={UdvalgtJoke}/>
+
+        <Route path="/opret" component={JokeOpret} />
+        <Route path="/slet/:id" component={JokeSlet} />
+        <Route path="/ret/:id" component={JokeRet} />
+
+      </BrowserRouter>
+      
     </div>
   );
 }
